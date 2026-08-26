@@ -1,6 +1,6 @@
 
 from sqlalchemy.orm import Mapped,mapped_column
-from Personal_Memory.backend.app.models.base import BaseModel
+from app.models.base import BaseModel
 
 class User(BaseModel):
     __tablename__ = 'users'
