@@ -14,3 +14,7 @@ class UserRead(BaseModel):
     email:str
     first_name:str
     last_name:str
+
+    model_config = {
+        "from_attributes": True
+    }
