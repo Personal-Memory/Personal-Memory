@@ -29,3 +29,8 @@ class UserLogin(BaseModel):
             raise ValueError("Either username or email must be provided") 
         return self
 
+class Token(BaseModel):
+    access_token:str
+    token_type:str
+
+

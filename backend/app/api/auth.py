@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 
 from app.core.dependencies import get_auth_service
-from app.schemas.users import UserCreate, UserRead,UserLogin
+from app.schemas.users import UserCreate, UserRead,UserLogin,Token
 from app.services.auth import AuthService
 
 router = APIRouter(
@@ -29,7 +29,7 @@ def register(
 
 @router.post(
     "/login", 
-    response_model=UserRead,
+    response_model=Token,
     status_code=status.HTTP_201_CREATED
                )
 def login(

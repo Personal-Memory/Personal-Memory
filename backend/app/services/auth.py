@@ -1,7 +1,7 @@
 from app.core.auth import hash_password,verify_password,create_access_token
 from app.models.users import User
 from app.repositories.users import UserRepository
-from app.schemas.users import UserCreate,UserLogin
+from app.schemas.users import UserCreate,UserLogin,Token
 
 class AuthService:
 
@@ -35,7 +35,7 @@ class AuthService:
 
         return created_user
 
-    def login(self, data:UserLogin) -> User:
+    def login(self, data:UserLogin) -> Token:
         user = self.user_repository.get_by_email(data.email)
 
         if not user:
@@ -48,12 +48,17 @@ class AuthService:
 
         is_valid_user = verify_password(data.password,user.hashed_password)
 
-        if data.username:
-            token = create_access_token({"sub":data.username})
-        else:
-            token = create_access_token({"sub": data.email})
+        if is_valid_user:
+            if data.username:
+                        token = create_access_token({"sub":data.username})
+            else:
+                        token = create_access_token({"sub": data.email})
+            
+            return token
+        raise ValueError("Incorrect password")
 
-        return token
+
+        
 
 
 
