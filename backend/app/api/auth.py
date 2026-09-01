@@ -30,7 +30,7 @@ def register(
 @router.post(
     "/login", 
     response_model=Token,
-    status_code=status.HTTP_201_CREATED
+    status_code=status.HTTP_200_OK
                )
 def login(
     user_data: UserLogin,
@@ -38,6 +38,7 @@ def login(
 ):
     try:
         return auth_service.login(user_data)
+        raise ValueError("bug")
     except ValueError as e:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,

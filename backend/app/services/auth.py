@@ -34,36 +34,32 @@ class AuthService:
         self.user_repository.commit()
 
         return created_user
-
-    def login(self, data:UserLogin) -> Token:
-        user = self.user_repository.get_by_email(data.email)
+    
+    def login(self, data: UserLogin) -> Token:
+        if data.username:
+            user, sub = self.user_repository.get_by_username(data.username), data.username
+            err = "No account registered with this username"
+        elif data.email:
+            user, sub = self.user_repository.get_by_email(data.email), data.email
+            err = "No account registered with this email"
+        else:
+            raise ValueError("Username or email required")
 
         if not user:
-            raise ValueError("No account registered with this email")
+            raise ValueError(err)
 
-        user = self.user_repository.get_by_username(data.username)
+        if not verify_password(data.password, user.hashed_password):
+            raise ValueError("Incorrect password")
 
-        if not user:
-            raise ValueError("No account registered with this username")
+        return create_access_token({"sub": sub})
 
-        is_valid_user = verify_password(data.password,user.hashed_password)
 
-        if is_valid_user:
-            if data.username:
-                        token = create_access_token({"sub":data.username})
-            else:
-                        token = create_access_token({"sub": data.email})
             
-            return token
-        raise ValueError("Incorrect password")
+
+
+
+
+
 
 
         
-
-
-
-
-
-
-
-    
