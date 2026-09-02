@@ -20,6 +20,7 @@ class UserRepository:
             .filter(User.username == username)
             .first()
         )
+    
 
     def add(self, user: User) -> User:
         self.session.add(user)

@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 from jose import jwt
 import os
 from dotenv import load_dotenv
+from app.schemas.users import Token
 
 
 load_dotenv()
@@ -23,9 +24,12 @@ if not SECRET_KEY:
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES =  30
 
-def create_access_token(data: dict):
+def create_access_token(data: dict)-> Token:
     to_encode =data.copy()
     expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     to_encode.update({"exp":expire})
-    return jwt.encode(to_encode,SECRET_KEY, algorithm=ALGORITHM)
+    jwt_token = jwt.encode(to_encode,SECRET_KEY, algorithm=ALGORITHM)
+
+    return Token(access_token=jwt_token, token_type="bearer")
+
 

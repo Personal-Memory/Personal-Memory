@@ -1,7 +1,7 @@
-from app.core.auth import hash_password
+from app.core.auth import hash_password,verify_password,create_access_token
 from app.models.users import User
 from app.repositories.users import UserRepository
-from app.schemas.users import UserCreate
+from app.schemas.users import UserCreate,UserLogin,Token
 
 class AuthService:
 
@@ -34,3 +34,32 @@ class AuthService:
         self.user_repository.commit()
 
         return created_user
+    
+    def login(self, data: UserLogin) -> Token:
+        if data.username:
+            user, sub = self.user_repository.get_by_username(data.username), data.username
+            err = "No account registered with this username"
+        elif data.email:
+            user, sub = self.user_repository.get_by_email(data.email), data.email
+            err = "No account registered with this email"
+        else:
+            raise ValueError("Username or email required")
+
+        if not user:
+            raise ValueError(err)
+
+        if not verify_password(data.password, user.hashed_password):
+            raise ValueError("Incorrect password")
+
+        return create_access_token({"sub": sub})
+
+
+            
+
+
+
+
+
+
+
+        
