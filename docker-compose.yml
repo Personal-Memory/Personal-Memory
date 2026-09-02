@@ -41,6 +41,21 @@ services:
         volumes:
             - postgres_data:/var/lib/postgresql/data
 
+    frontend:
+        build:
+            context: ./web
+            dockerfile: Dockerfile
+        container_name: personal-memory-frontend
+        ports:
+            - "5173:5173"
+        volumes:
+            - ./web:/app
+            - /app/node_modules
+        env_file:
+            - ./web/.env
+        depends_on:
+            - backend
+           
 volumes:
     postgres_data:
 
