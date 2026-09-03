@@ -16,6 +16,17 @@ export interface RegisterResponse {
     last_name: string;
 }
 
+export interface LoginRequest{
+    username:string | null;
+    password: string;
+
+}
+
+export interface LoginResponse{
+    access_token: string;
+    token_type: string;
+}
+
 export async function register(request: RegisterRequest): Promise<RegisterResponse> {
     return apiRequest<RegisterResponse>(
         "/auth/register",
@@ -23,5 +34,16 @@ export async function register(request: RegisterRequest): Promise<RegisterRespon
             method: "POST",
             body: JSON.stringify(request),
         }
+    );
+}
+
+export async function login(request:LoginRequest): Promise<LoginResponse>{
+    return apiRequest<LoginResponse>(
+        "auth/login",
+        {
+            method:"POST",
+            body: JSON.stringify(request),
+        }
+
     );
 }
