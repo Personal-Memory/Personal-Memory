@@ -4,20 +4,25 @@ import { useNavigate } from "react-router-dom";
 import { login } from "../services/authService";
 
 function LoginForm() {
-  const [username, setUsername] = useState("");
+  const [identifier, setIdentifier] = useState("");
   // const[email, setEmail] = useState("")
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
+  const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(identifier);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
     setIsLoading(true);
     try {
-      const loggedUser = await login({ username, password });
+      const loggedUser = await login({
+        username: isEmail ? null : identifier,
+        email: isEmail ? identifier : null,
+        password,
+      });
       localStorage.setItem("access_token", loggedUser.access_token);
       navigate("/dashboard");
     } catch (error) {
@@ -32,21 +37,21 @@ function LoginForm() {
   };
   return (
     <form
-      className="space-y-5 rounded-2xl border border-gray-200 bg-white p-6 shadwo-sm"
+      className="space-y-5 rounded-2xl border border-gray-200 bg-white p-6 shadow-md"
       onSubmit={handleSubmit}
     >
       <div>
         <label
-          htmlFor="userName"
+          htmlFor="identifier"
           className="mb-2 block text-sm font-medium text-gray-700"
         >
-          User Name
+          Email or Username
         </label>
         <input
-          id="userName"
-          name="userName"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          id="identifier"
+          name="identifier"
+          value={identifier}
+          onChange={(e) => setIdentifier(e.target.value)}
           type="text"
           required
           className="w-full rounded-lg border border-gray-300 px-3 py-2.5 outline-none focus:border-black"
