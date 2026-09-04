@@ -40,7 +40,7 @@ export async function register(request: RegisterRequest): Promise<RegisterRespon
 
 export async function login(request:LoginRequest): Promise<LoginResponse>{
     return apiRequest<LoginResponse>(
-        "auth/login",
+        "/auth/login",
         {
             method:"POST",
             body: JSON.stringify(request),
