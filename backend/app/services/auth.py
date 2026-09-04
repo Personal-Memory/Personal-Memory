@@ -10,7 +10,9 @@ class AuthService:
 
     def register(self, data: UserCreate) -> User:
 
-        existing_user = self.user_repository.get_by_email(data.email)
+        email = data.email.lower()
+
+        existing_user = self.user_repository.get_by_email(email)
 
         if existing_user:
             raise ValueError("email already registered")
@@ -24,7 +26,7 @@ class AuthService:
 
         user = User(
             username=data.username,
-            email=data.email,
+            email=email,
             first_name=data.first_name,
             last_name=data.last_name,
             hashed_password=hashed_password,
@@ -40,7 +42,9 @@ class AuthService:
             user, sub = self.user_repository.get_by_username(data.username), data.username
             err = "No account registered with this username"
         elif data.email:
-            user, sub = self.user_repository.get_by_email(data.email), data.email
+            email = data.email.lower()
+
+            user, sub = self.user_repository.get_by_email(email), email
             err = "No account registered with this email"
         else:
             raise ValueError("Username or email required")

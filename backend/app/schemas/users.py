@@ -2,13 +2,16 @@ from  pydantic import BaseModel,model_validator,Field, EmailStr
 from typing import Optional
 
 class UserCreate(BaseModel):
-    username:str 
+    username:str = Field(
+        min_length = 3,
+        max_length = 30,
+        pattern = r"^[a-zA-Z0-9_]+$"
+    )
     email:EmailStr
     first_name:str = Field(min_length=1)
     last_name:str = Field(min_length=1)
     password:str = Field(min_length=8)
 
-    
 
 class UserRead(BaseModel):
     id:int
@@ -20,6 +23,8 @@ class UserRead(BaseModel):
     model_config = {
         "from_attributes": True
     }
+
+
 class UserLogin(BaseModel):
     username:Optional[str] = None
     email:Optional[str] = None
@@ -30,6 +35,7 @@ class UserLogin(BaseModel):
         if not self.username and not self.email:
             raise ValueError("Either username or email must be provided") 
         return self
+
 
 class Token(BaseModel):
     access_token:str
