@@ -1,12 +1,14 @@
-from  pydantic import BaseModel,model_validator
+from  pydantic import BaseModel,model_validator,Field, EmailStr
 from typing import Optional
 
 class UserCreate(BaseModel):
-    username:str
-    email:str
-    first_name:str
-    last_name:str
-    password:str
+    username:str 
+    email:EmailStr
+    first_name:str = Field(min_length=1)
+    last_name:str = Field(min_length=1)
+    password:str = Field(min_length=8)
+
+    
 
 class UserRead(BaseModel):
     id:int

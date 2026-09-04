@@ -43,7 +43,7 @@ function RegisterForm() {
                 last_name: lastName,
             });
 
-            navigate("/");
+            navigate("/login");
         } catch (error) {
             if (error instanceof Error) {
                 setError(error.message)
