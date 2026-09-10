@@ -38,13 +38,14 @@ class AuthService:
         return created_user
     
     def login(self, data: UserLogin) -> Token:
+        print("login data:", data)
         if data.username:
-            user, sub = self.user_repository.get_by_username(data.username), data.username
+            user = self.user_repository.get_by_username(data.username)
             err = "No account registered with this username"
         elif data.email:
             email = data.email.lower()
 
-            user, sub = self.user_repository.get_by_email(email), email
+            user = self.user_repository.get_by_email(email)
             err = "No account registered with this email"
         else:
             raise ValueError("Username or email required")
@@ -55,7 +56,7 @@ class AuthService:
         if not verify_password(data.password, user.hashed_password):
             raise ValueError("Incorrect password")
 
-        return create_access_token({"sub": sub})
+        return create_access_token({"sub": str(user.id)})
 
 
             

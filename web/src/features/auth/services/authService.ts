@@ -1,5 +1,12 @@
-import { apiRequest } from "../../../lib/api";
+import { apiRequest, apiRequestWithAuth } from "../../../lib/api";
 
+export interface User {
+    id: number;
+    username: string;
+    email: string;
+    first_name: string | null;
+    last_name: string | null;
+}
 export interface RegisterRequest {
     username: string;
     email: string;
@@ -47,4 +54,8 @@ export async function login(request:LoginRequest): Promise<LoginResponse>{
         }
 
     );
+}
+
+export async function getCurrentUser(): Promise<User> {
+    return apiRequestWithAuth<User>("/auth/me");
 }

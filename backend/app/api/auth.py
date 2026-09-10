@@ -1,6 +1,8 @@
+from app.models.users import User
 from fastapi import APIRouter, Depends, HTTPException, status
 
 from app.core.dependencies import get_auth_service
+from app.core.dependencies import get_current_user
 from app.schemas.users import UserCreate, UserRead,UserLogin,Token
 from app.services.auth import AuthService
 
@@ -44,4 +46,13 @@ def login(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail= str(e),
         )
-    
+
+@router.get(
+    "/me",
+    response_model=UserRead,
+    status_code=status.HTTP_200_OK
+)
+def get_current_user(
+    current_user: User = Depends(get_current_user)
+):
+    return current_user

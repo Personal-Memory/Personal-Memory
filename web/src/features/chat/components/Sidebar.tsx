@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 const conversations = [
     "My Machine Learning Course",
     "Personal Memory Project",
@@ -6,6 +8,9 @@ const conversations = [
 ]
 
 function Sidebar() {
+
+    const navigate = useNavigate();
+
     return (
         <aside className="flex h-full w-64 flex-col border-r border-gray-200 bg-gray-50">
             {/* Logo */}
@@ -24,7 +29,10 @@ function Sidebar() {
 
             {/* Navigation */}
             <nav className="px-3">
-                <button className="w-full rounded-lg px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-200">
+                <button 
+                    className="w-full rounded-lg px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-20 hover:cursor-pointer"
+                    onClick={() => navigate("/notes")}
+                >
                     Notes
                 </button>
 
