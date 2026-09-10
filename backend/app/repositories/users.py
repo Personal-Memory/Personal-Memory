@@ -20,6 +20,13 @@ class UserRepository:
             .filter(User.username == username)
             .first()
         )
+
+    def get_by_id(self, id: int) -> User | None:
+        return (
+            self.session.query(User)
+            .filter(User.id == id)
+            .first()
+        )
     
 
     def add(self, user: User) -> User:
