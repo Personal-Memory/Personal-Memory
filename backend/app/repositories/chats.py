@@ -12,15 +12,16 @@ class ChatRepository:
             .filter(ChatSession.id == id )
             .first()
         )
-    def get_all_sessions(self) -> ChatSession | None:
+    def get_all_sessions(self, user_id: int) -> ChatSession | None:
         return(
             self.session.query(ChatSession)
+            .filter(ChatSession.user_id == user_id)
             .all() 
         )
-    def get_all_messages(self,id:int) -> ChatMessage | None:
+    def get_all_messages_by_role(self,id:int,role:str) -> ChatMessage | None:
         return(
             self.session.query(ChatMessage)
-            .filter(ChatMessage.session_id ==id)
+            .filter(ChatMessage.session_id ==id and ChatMessage.user_role == role)
             .all()
         )
     def get_message_by_id(self,id:int) ->ChatMessage | None:
