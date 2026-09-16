@@ -1,14 +1,13 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from app.core.dependencies import get_auth_service, get_current_user
-from app.schemas.chats import ChatMessageCreate,ChatMessageRead
-
+from app.schemas.chats import ChatMessageCreate,ChatMessageRead,GetAllSessionMessageByRoleRead
 from app.services.chat import ChatService
 
 from app.core.dependencies import get_current_user,get_chat_service
 from app.services.auth import User 
 router  = APIRouter(
     prefix = "/chats",
-    tags = ["chats"]
+    tags = ["Chats"]
 
 )
 
@@ -28,5 +27,11 @@ def send_message(
     except ValueError as e:
       raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(e))
 
+@router.get(
+   "messages",
+   response_model =  GetAllSessionMessageByRoleRead
+)
 
+def get_all_message():
+   pass
     

@@ -12,18 +12,23 @@ class ChatRepository:
             .filter(ChatSession.id == id )
             .first()
         )
-    def get_all_sessions(self, user_id: int) -> ChatSession | None:
+    def get_all_sessions(self, user_id: int) -> list[ChatSession] | None:
         return(
             self.session.query(ChatSession)
             .filter(ChatSession.user_id == user_id)
             .all() 
         )
-    def get_all_messages_by_role(self,id:int,role:str) -> ChatMessage | None:
-        return(
-            self.session.query(ChatMessage)
-            .filter(ChatMessage.session_id ==id and ChatMessage.user_role == role)
-            .all()
-        )
+    def get_messages_by_role(self, session_id: int, user_id: int, role: str) -> list[ChatMessage]:
+                return (
+                    self.session.query(ChatMessage)
+                    .join(ChatSession, ChatMessage.session_id == ChatSession.id)
+                    .filter(
+                        ChatMessage.session_id == session_id,
+                        ChatMessage.user_role == role,
+                        ChatSession.user_id == user_id,
+                    )
+                    .all()
+                )
     def get_message_by_id(self,id:int) ->ChatMessage | None:
         return(
             self.session.query(ChatMessage)
