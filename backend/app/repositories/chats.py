@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 
 from app.models.chat import ChatSession,ChatMessage
+from app.schemas.chats import ChatMessageRead,GetAllSessionRead
 
 class ChatRepository:
     def __init__(self,session:Session):
@@ -12,13 +13,13 @@ class ChatRepository:
             .filter(ChatSession.id == id )
             .first()
         )
-    def get_all_sessions(self, user_id: int) -> list[ChatSession] | None:
+    def get_all_sessions(self, user_id: int) -> list[GetAllSessionRead] | None:
         return(
             self.session.query(ChatSession)
             .filter(ChatSession.user_id == user_id)
             .all() 
         )
-    def get_messages_by_role(self, session_id: int, user_id: int, role: str) -> list[ChatMessage]:
+    def get_messages_by_role(self, session_id: int, role: str, user_id: int) -> list[ChatMessageRead]:
                 return (
                     self.session.query(ChatMessage)
                     .join(ChatSession, ChatMessage.session_id == ChatSession.id)

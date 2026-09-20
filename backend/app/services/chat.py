@@ -1,6 +1,6 @@
 from app.models.chat import ChatMessage,ChatSession
 from app.repositories.chats import ChatRepository
-from app.schemas.chats import ChatMessageCreate,ChatMessageRead,GetAllSessionMessagesByRole
+from app.schemas.chats import ChatMessageCreate,ChatMessageRead,GetAllSessionRead
 from app.models.users import User
 
 class ChatService:
@@ -42,16 +42,15 @@ class ChatService:
 
         return new_message
 
-    def get_messages_by_role(self, data:GetAllSessionMessagesByRole, current_user: User) -> list[ChatMessage]:
+    def get_messages_by_role(self, session_id: int, role: str, current_user: User) -> list[ChatMessageRead]:
 
-         messages = self.chat_repository.get_messages_by_role(data.session_id, current_user.id, data.user_role)
-
+         messages = self.chat_repository.get_messages_by_role(session_id, role, current_user.id)
          if messages is None:
               raise ValueError("No message is found for this User under this chat session!")
          
          return messages
 
-    def get_all_sessions(self, current_user:User) -> list[ChatSession]:
+    def get_all_sessions(self, current_user:User) -> list[GetAllSessionRead]:
          all_sessions = self.chat_repository.get_all_sessions(current_user.id)
 
          if all_sessions  is None:

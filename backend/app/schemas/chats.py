@@ -12,20 +12,21 @@ class ChatMessageRead(BaseModel):
     user_role: str
     content: str
 
-class GetAllSessionMessagesByRole(BaseModel):
-    session_id:int
-    user_role: str
-    user_id: int
+    model_config = {
+        "from_attributes" : True
+    } 
 
-class GetAllSessionMessageByRoleRead(BaseModel):
-    id:int
-    content: str
-    user_role : str
 
 
 class GetAllSessionRead(BaseModel):
-    session_id : int
+    id : int
     title : str
+
+    model_config = {
+            "from_attributes" : True
+        } 
+
+
 
 
 
