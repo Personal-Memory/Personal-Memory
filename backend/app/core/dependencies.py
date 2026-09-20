@@ -5,7 +5,9 @@ from jose import jwt
 
 from app.core.database import get_session
 from app.repositories.users import UserRepository
+from app.repositories.chats import ChatRepository
 from app.services.auth import AuthService
+from app.services.chat import ChatService
 
 from app.core.auth import SECRET_KEY, ALGORITHM
 from app.models.users import User
@@ -33,6 +35,17 @@ def get_note_service(
     note_repository: NoteRepository = Depends(get_note_repository)
 ) -> NoteService:
     return NoteService(note_repository)
+
+#Chat
+def get_chat_repository(
+         session: Session = Depends(get_session)
+) -> ChatRepository:
+    return ChatRepository(session)
+
+def get_chat_service(
+        chat_repository: ChatRepository = Depends(get_chat_repository)
+) -> ChatService:
+    return ChatService(chat_repository)
 
 # Token
 

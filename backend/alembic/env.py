@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 
 from app.core.database import Base
 from app.models.users import User
+from app.models.chat import ChatSession, ChatMessage
 from app.models.notes import Note
 
 
