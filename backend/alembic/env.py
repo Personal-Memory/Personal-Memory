@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from app.core.database import Base
 from app.models.users import User
 from app.models.notes import Note
+from app.models.note_chunks import NoteChunk
 
 
 from sqlalchemy import engine_from_config

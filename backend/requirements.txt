@@ -10,4 +10,5 @@ pydantic
 email-validator
 alembic
 python-dotenv
+pgvector
 

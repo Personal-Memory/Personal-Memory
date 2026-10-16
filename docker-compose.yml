@@ -20,7 +20,7 @@ services:
             - ./backend:/app
         
     postgres:
-        image: postgres:17
+        image: pgvector/pgvector:pg17
 
         container_name: personal-memory-postgres
 
