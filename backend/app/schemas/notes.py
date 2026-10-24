@@ -30,3 +30,14 @@ class NoteListRead(BaseModel):
     model_config = {
         "from_attributes" : True
     }
+
+class SearchResult(BaseModel):
+    note_id: int
+    title: str
+    chunk_index: int
+    content: str
+    score: float
+
+    model_config = {
+        "from_attributes": True
+    }
