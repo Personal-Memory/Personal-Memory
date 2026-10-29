@@ -21,6 +21,7 @@ class Embedder(Protocol):
     dim: int
     def embed_documents(self, texts: list[str]) -> list[list[float]]: ...
     def embed_query(self, text: str) -> list[float]: ...
+    def embed_queries(self, texts: list[str]) -> list[list[float]]: ...
 
 class EmbeddingError(RuntimeError):
     """The embedding provider failed (network, quota, bad key)."""
@@ -66,11 +67,14 @@ class GeminiEmbedder:
     def embed_query(self, text: str) -> list[float]:
         return self._embed([text], "RETRIEVAL_QUERY")[0]
 
+    def embed_queries(self, texts: list[str]) -> list[list[float]]:
+        return self._embed(texts, "RETRIEVAL_QUERY") if texts else []
+
 
 # below is a fake embedder for testing purposes. It is deterministic, but not semantic. It should never be used in production.
 # It is useful for testing the chunking and embedding pipeline without relying on an external API or model.
 class HashingEmbedder:
-    """Deterministic fake for tests. NOT semantic. Never report its numbers."""
+    """Deterministic fake for tests. NOT semantic."""
     dim = EMBEDDING_DIM
 
     def _embed(self, text: str) -> list[float]:
@@ -81,7 +85,11 @@ class HashingEmbedder:
         return _normalize(vector)
 
     def embed_documents(self, texts): return [self._embed(t) for t in texts]
+
     def embed_query(self, text): return self._embed(text)
+
+    def embed_queries(self, texts):
+        return [self._embed(t) for t in texts]
 
 
 @lru_cache(maxsize=1)
