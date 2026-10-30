@@ -1,5 +1,5 @@
 {
-  "description": "Synthetic personal-notes corpus. 24 notes in 4 topic clusters (cooking, travel, programming, health) so that retrieval must separate similar notes. 5 queries per note: 3 'paraphrase' (little lexical overlap with the note) and 2 'keyword' (share rare terms). Each query has exactly one relevant note.",
+  "description": "Synthetic personal-notes corpus. 40 notes in 4 topic clusters (cooking, travel, programming, health) so that retrieval must separate similar notes. 5 queries per note: 3 'paraphrase' (little lexical overlap with the note) and 2 'keyword' (share rare terms). Each query has exactly one relevant note.",
   "notes": [
     {"id": 1, "title": "Injera troubleshooting", "text": "My teff batter ferments for three days on the counter before it is ready. If the surface smells sharply sour and the bubbles stop, I skim off the water on top and start the absit step: cook one cup of the batter into a thin porridge, cool it, and stir it back in.\nWhen the mitad is too hot the injera cracks at the edges, and when the batter is too thick the little eyes never form. Keep the lid on for about two minutes and don't flip it. Use a nonstick pan if the clay mitad is at the other house."},
     {"id": 2, "title": "Shakshuka recipe", "text": "Saute a diced onion and two garlic cloves in olive oil, add a teaspoon each of cumin and smoked paprika, then pour in one can of crushed tomatoes. Simmer fifteen minutes until it thickens, and add a chopped green chili if you want heat.\nMake little wells with a spoon and crack in four eggs. Cover the pan and cook for about eight minutes so the whites set but the yolks stay runny. Crumble feta on top, sprinkle parsley, and serve straight from the pan with warm bread."},
@@ -24,7 +24,23 @@
     {"id": 21, "title": "Posture and desk setup", "text": "The top of the monitor should sit at eye level, about an arm's length away. A laptop stand with a separate keyboard keeps my neck neutral, and the wrists stay straight when the keyboard is flat.\nI follow the 20-20-20 rule, looking at something far away for twenty seconds every twenty minutes, and stand up once an hour. The chair needs lumbar support, and the feet should rest flat on the floor, otherwise my lower back aches by afternoon."},
     {"id": 22, "title": "Hydration and coffee", "text": "Target is two and a half liters of water per day, tracked in a phone app. I drink one cup of coffee after breakfast and switch to tea in the afternoon.\nWhenever I skip water in the morning I get a dull headache by noon, so the first glass goes down before anything else. On gym days I add a pinch of salt and a banana to the plan. Sugary sodas are out except on holidays."},
     {"id": 23, "title": "Strength routine", "text": "I follow a push, pull, legs split four days a week. Squats are three sets of five, and every session I try to add 2.5 kilograms to the bar when all reps feel clean, which is progressive overload.\nEvery sixth week is a deload where I use sixty percent of the weight to let the joints recover. The current goal is ten strict bodyweight pull-ups, and I am at six. Protein target is one hundred and thirty grams a day."},
-    {"id": 24, "title": "Meditation log", "text": "Ten minutes every morning before opening the phone. I count breaths from one to ten and start over whenever the mind wanders, which happens constantly; noticing it is the practice itself.\nThe streak is at twenty-one days. The silent timer works better for me than the guided app, because I stop waiting for the voice. Before the last two interviews I felt calmer and the usual racing thoughts were quieter."}
+    {"id": 24, "title": "Meditation log", "text": "Ten minutes every morning before opening the phone. I count breaths from one to ten and start over whenever the mind wanders, which happens constantly; noticing it is the practice itself.\nThe streak is at twenty-one days. The silent timer works better for me than the guided app, because I stop waiting for the voice. Before the last two interviews I felt calmer and the usual racing thoughts were quieter."},
+    {"id": 25, "title": "Coffee brewing notes", "text": "For the morning pour-over I use 20 grams of medium-ground beans with 320 grams of water just off the boil. I bloom for forty seconds, then pour in slow circles until the scale reaches the target.\nThe brew tastes sour when the grind is too coarse or the water cools too much, while bitterness means I should grind a little larger. I rinse the paper filter first and clean the burr grinder every Sunday so old oils do not spoil the cup."},
+    {"id": 26, "title": "Freezer inventory", "text": "Label every container with the dish and date before it goes into the freezer. Soups and stews are portioned into flat bags so they freeze quickly and stack neatly, while cooked rice goes into single-serving boxes.\nThe oldest meals are in the top drawer: lentil soup from 3 March, two portions of doro wat from 7 March, and tomato sauce from 10 March. Thaw food overnight in the fridge and reheat leftovers until steaming rather than leaving them on the counter."},
+    {"id": 27, "title": "Travel budgeting sheet", "text": "For the next trip I split the budget into transport, lodging, food, activities, and a ten percent emergency buffer. I record every purchase in the spreadsheet in the local currency and convert it at the month-end exchange rate.\nCash is useful for small taxis and markets, but I keep a second card in a separate wallet. The daily food allowance is 25 euros, and I check the running total each evening so an expensive tour does not surprise me later."},
+    {"id": 28, "title": "Mountain hike checklist", "text": "The day before a long hike I charge the headlamp and phone, download the offline map, and tell someone the route and expected return time. The pack gets two liters of water, a rain shell, first-aid supplies, a whistle, and an extra layer.\nI start early to finish exposed ridges before afternoon storms. Trekking poles help on the descent, and I turn around if the weather changes or the remaining daylight is shorter than the route requires."},
+    {"id": 29, "title": "Python testing workflow", "text": "Run the focused test file while developing, then run the full suite before opening a pull request. Pytest fixtures provide a temporary database and keep setup out of individual tests.\nFor flaky tests I capture the seed and rerun the case several times instead of adding a sleep. Coverage is useful for finding untested branches, but a high percentage does not replace assertions about the important behavior. CI runs linting, type checks, and tests on every push."},
+    {"id": 30, "title": "Redis cache design", "text": "Cache read-heavy profile responses under a key containing the user id and version, with a fifteen-minute expiration. On an update, delete the key so the next request repopulates it from the database.\nNever treat the cache as the source of truth. Use a short lock when many requests miss the same key, and limit value size so one oversized response cannot evict useful entries. Monitor hit rate, memory usage, and evictions after deployment."},
+    {"id": 31, "title": "Weekly meal and exercise log", "text": "I schedule strength training on Monday and Thursday, an easy walk on Tuesday, and a longer bike ride on Saturday. Rest days remain on the calendar because recovery is part of the plan rather than a failure.\nI write down energy, soreness, and sleep beside each session. If two nights of poor sleep coincide with unusual fatigue, I replace the hard workout with mobility work. The aim is steady consistency, not making up missed sessions with double workouts."},
+    {"id": 32, "title": "Allergy symptom log", "text": "During pollen season I record the time of sneezing, itchy eyes, outdoor exposure, and any medicine taken. Keeping the bedroom window closed on high-count mornings and showering after a park visit reduced the evening symptoms.\nThe air purifier runs on its low setting overnight, and I wash bedding weekly in hot water. If breathing becomes difficult or symptoms change suddenly, I seek medical help instead of changing medication on my own."},
+    {"id": 33, "title": "Bread baking schedule", "text": "I mix the dough after dinner and leave it covered on the counter for the first rise. In the morning I shape the loaf, place it in a floured basket, and refrigerate it until the oven and Dutch oven are fully heated.\nThe covered pot traps steam during the first twenty minutes, then I remove the lid so the crust can brown. I score one deep slash before baking and wait at least an hour after cooling before slicing."},
+    {"id": 34, "title": "Grocery price comparison", "text": "I compare the unit price rather than the sticker price when shopping. The neighborhood market has cheaper vegetables, while the supermarket is better for bulk oats and household supplies when there is a discount.\nI plan three dinners before leaving, check the pantry first, and bring a reusable bag. A written list prevents impulse snacks, and I record the total afterward to see whether the weekly food budget is holding."},
+    {"id": 35, "title": "Train journey plan", "text": "The overnight train leaves at 20:40, so I will arrive at the station thirty minutes early with the ticket saved offline. A small lock secures the backpack, and earplugs and an eye mask should make the sleeper berth more comfortable.\nI keep water and a snack within reach, set an alarm before the arrival time, and confirm the platform on the station board. The return ticket is changeable, which is useful if the conference schedule moves."},
+    {"id": 36, "title": "Language study routine", "text": "I practice German for twenty-five minutes after breakfast using spaced-repetition cards, then listen to a short news story during the commute. On Wednesdays I meet a conversation partner and write down phrases I could not produce quickly.\nThe review deck stays small enough to finish daily, and I add new words only after checking an example sentence. Every Sunday I revisit the week's mistakes rather than starting another grammar chapter."},
+    {"id": 37, "title": "API pagination notes", "text": "List endpoints use a cursor based on the last record's stable sort key instead of an offset, because inserts can otherwise shift later pages. The response includes the items and a next_cursor that is null when there are no more results.\nThe server caps page size at one hundred and validates cursors as opaque values. Tests cover an empty page, duplicate prevention across pages, and a record inserted between two requests."},
+    {"id": 38, "title": "Frontend accessibility checklist", "text": "Every interactive control needs a visible focus style and a label that a screen reader can understand. Images that convey meaning get useful alt text, while decorative images use an empty alt attribute.\nI check keyboard navigation without a mouse, verify color contrast, and make error messages identify the field that needs attention. The page should remain usable when text is zoomed to 200 percent."},
+    {"id": 39, "title": "Morning mobility routine", "text": "Before sitting at the desk I spend ten minutes on gentle movement: cat-cow, hip hinges, ankle circles, and a slow thoracic rotation on each side. The goal is to wake up stiff joints, not to force a deep stretch.\nI breathe normally and stop if a movement causes sharp pain. On cycling days I add calf raises, while on rest days an easy walk is enough. The routine works best when the mat is already beside the bed."},
+    {"id": 40, "title": "Doctor appointment preparation", "text": "Before an appointment I write the main concern, when it began, what makes it better or worse, and every medicine or supplement I take. I bring recent readings and a short list of questions so I do not forget them in the room.\nI note the clinician's instructions and the follow-up date before leaving. If a test is ordered, I record where it will happen and whether fasting or other preparation is required."}
   ],
   "queries": [
     {"q": "why does my flatbread not get holes on top", "note": 1, "type": "paraphrase"},
@@ -169,6 +185,102 @@
     {"q": "how long has my daily habit continued without a break", "note": 24, "type": "paraphrase"},
     {"q": "effect on nervousness before job talks", "note": 24, "type": "paraphrase"},
     {"q": "count breaths one to ten silent timer", "note": 24, "type": "keyword"},
-    {"q": "streak twenty-one days guided app", "note": 24, "type": "keyword"}
+    {"q": "streak twenty-one days guided app", "note": 24, "type": "keyword"},
+
+    {"q": "why does my filter coffee taste sharp and thin", "note": 25, "type": "paraphrase"},
+    {"q": "how much water should I use for my morning manual brew", "note": 25, "type": "paraphrase"},
+    {"q": "what causes an unpleasantly harsh cup from the grinder", "note": 25, "type": "paraphrase"},
+    {"q": "twenty grams 320 grams forty second bloom", "note": 25, "type": "keyword"},
+    {"q": "coarse grind rinse paper burr grinder", "note": 25, "type": "keyword"},
+
+    {"q": "best way to organize homemade food in the deep freeze", "note": 26, "type": "paraphrase"},
+    {"q": "how should I defrost cooked meals safely", "note": 26, "type": "paraphrase"},
+    {"q": "which frozen dishes need to be eaten first", "note": 26, "type": "paraphrase"},
+    {"q": "flat bags lentil soup doro wat March", "note": 26, "type": "keyword"},
+    {"q": "label date fridge overnight steaming", "note": 26, "type": "keyword"},
+
+    {"q": "how am I tracking spending during the holiday", "note": 27, "type": "paraphrase"},
+    {"q": "what amount have I set aside for meals each day", "note": 27, "type": "paraphrase"},
+    {"q": "where should I keep backup payment cards while abroad", "note": 27, "type": "paraphrase"},
+    {"q": "transport lodging activities ten percent buffer", "note": 27, "type": "keyword"},
+    {"q": "twenty-five euros local currency spreadsheet", "note": 27, "type": "keyword"},
+
+    {"q": "what should I pack before hiking in the mountains", "note": 28, "type": "paraphrase"},
+    {"q": "how do I make sure someone knows my walking route", "note": 28, "type": "paraphrase"},
+    {"q": "when should I abandon a trail because of conditions", "note": 28, "type": "paraphrase"},
+    {"q": "offline map whistle rain shell two liters", "note": 28, "type": "keyword"},
+    {"q": "headlamp trekking poles exposed ridge storms", "note": 28, "type": "keyword"},
+
+    {"q": "which tests should I run before submitting code", "note": 29, "type": "paraphrase"},
+    {"q": "how can I investigate a test that fails only sometimes", "note": 29, "type": "paraphrase"},
+    {"q": "why is test coverage not enough by itself", "note": 29, "type": "paraphrase"},
+    {"q": "pytest fixtures temporary database focused file", "note": 29, "type": "keyword"},
+    {"q": "seed lint type checks CI every push", "note": 29, "type": "keyword"},
+
+    {"q": "how long should a cached profile response remain available", "note": 30, "type": "paraphrase"},
+    {"q": "what should happen to cached data after a profile update", "note": 30, "type": "paraphrase"},
+    {"q": "how do I prevent many simultaneous misses from overloading the database", "note": 30, "type": "paraphrase"},
+    {"q": "Redis user id version fifteen minutes", "note": 30, "type": "keyword"},
+    {"q": "lock hit rate evictions value size", "note": 30, "type": "keyword"},
+
+    {"q": "how do I balance training and rest across the week", "note": 31, "type": "paraphrase"},
+    {"q": "what signs tell me to replace a hard session with gentle movement", "note": 31, "type": "paraphrase"},
+    {"q": "why should missed workouts not be doubled later", "note": 31, "type": "paraphrase"},
+    {"q": "Monday Thursday strength Saturday bike", "note": 31, "type": "keyword"},
+    {"q": "sleep soreness fatigue mobility recovery", "note": 31, "type": "keyword"},
+
+    {"q": "what details am I recording when seasonal symptoms flare", "note": 32, "type": "paraphrase"},
+    {"q": "which household habits reduced my evening allergy problems", "note": 32, "type": "paraphrase"},
+    {"q": "when should I get professional help instead of changing treatment", "note": 32, "type": "paraphrase"},
+    {"q": "pollen sneezing itchy eyes outdoor exposure", "note": 32, "type": "keyword"},
+    {"q": "air purifier bedding hot water window closed", "note": 32, "type": "keyword"},
+
+    {"q": "why should I wait before cutting a loaf from the oven", "note": 33, "type": "paraphrase"},
+    {"q": "how can I get a crisp browned crust on homemade bread", "note": 33, "type": "paraphrase"},
+    {"q": "when should dough move from the counter to the refrigerator", "note": 33, "type": "paraphrase"},
+    {"q": "Dutch oven steam twenty minutes deep slash", "note": 33, "type": "keyword"},
+    {"q": "covered first rise floured basket one hour", "note": 33, "type": "keyword"},
+
+    {"q": "how do I stay within my food spending limit at the shops", "note": 34, "type": "paraphrase"},
+    {"q": "which store is best for vegetables versus pantry staples", "note": 34, "type": "paraphrase"},
+    {"q": "why am I checking the price per amount instead of the package price", "note": 34, "type": "paraphrase"},
+    {"q": "unit price bulk oats reusable bag three dinners", "note": 34, "type": "keyword"},
+    {"q": "written list pantry impulse snacks weekly budget", "note": 34, "type": "keyword"},
+
+    {"q": "what time should I arrive for the night train", "note": 35, "type": "paraphrase"},
+    {"q": "what items will help me sleep during the railway trip", "note": 35, "type": "paraphrase"},
+    {"q": "why did I choose a flexible ticket for the return", "note": 35, "type": "paraphrase"},
+    {"q": "20:40 thirty minutes offline ticket sleeper berth", "note": 35, "type": "keyword"},
+    {"q": "backpack lock earplugs eye mask platform", "note": 35, "type": "keyword"},
+
+    {"q": "how long do I study German each morning", "note": 36, "type": "paraphrase"},
+    {"q": "what do I do with vocabulary I could not say", "note": 36, "type": "paraphrase"},
+    {"q": "how do I keep language review manageable every day", "note": 36, "type": "paraphrase"},
+    {"q": "twenty-five minutes spaced repetition Wednesday partner", "note": 36, "type": "keyword"},
+    {"q": "Sunday mistakes example sentence news commute", "note": 36, "type": "keyword"},
+
+    {"q": "why use a cursor instead of numbered pages for a list API", "note": 37, "type": "paraphrase"},
+    {"q": "what does the response return when there are no more records", "note": 37, "type": "paraphrase"},
+    {"q": "which pagination edge cases should the tests cover", "note": 37, "type": "paraphrase"},
+    {"q": "next_cursor stable sort key one hundred", "note": 37, "type": "keyword"},
+    {"q": "opaque cursor duplicate inserted record empty page", "note": 37, "type": "keyword"},
+
+    {"q": "how can someone navigate the page without a mouse", "note": 38, "type": "paraphrase"},
+    {"q": "what text should an image description provide", "note": 38, "type": "paraphrase"},
+    {"q": "how do I make form errors clear to assistive technology", "note": 38, "type": "paraphrase"},
+    {"q": "focus style alt text contrast keyboard", "note": 38, "type": "keyword"},
+    {"q": "zoom 200 percent decorative empty alt", "note": 38, "type": "keyword"},
+
+    {"q": "what gentle exercises do I do before starting work", "note": 39, "type": "paraphrase"},
+    {"q": "what is the purpose of my short morning movement session", "note": 39, "type": "paraphrase"},
+    {"q": "when should I stop a mobility exercise", "note": 39, "type": "paraphrase"},
+    {"q": "cat-cow hip hinges ankle circles ten minutes", "note": 39, "type": "keyword"},
+    {"q": "thoracic rotation calf raises mat beside bed", "note": 39, "type": "keyword"},
+
+    {"q": "what information should I write down before seeing the doctor", "note": 40, "type": "paraphrase"},
+    {"q": "how can I remember the questions I want to ask at an appointment", "note": 40, "type": "paraphrase"},
+    {"q": "what should I record after the clinician gives instructions", "note": 40, "type": "paraphrase"},
+    {"q": "medicines supplements readings follow-up date", "note": 40, "type": "keyword"},
+    {"q": "test preparation fasting location main concern", "note": 40, "type": "keyword"}
   ]
 }
